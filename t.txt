@@ -1,0 +1,36 @@
+<VirtualHost *:80>
+    ServerAdmin admin@chainai.online
+    ServerName chainai.online
+    ServerAlias www.chainai.online
+
+    DocumentRoot /var/www/project/
+
+    ErrorLog ${APACHE_LOG_DIR}/chainai.online_error.log
+    CustomLog ${APACHE_LOG_DIR}/chainai.online_access.log combined
+
+    Alias /static /var/www/project/static
+    <Directory /var/www/project/static>
+            Require all granted
+    </Directory>
+
+    Alias /media /var/www/project/media
+    <Directory /var/www/project/media>
+            Require all granted
+     </Directory>
+
+
+    Alias /staticfiles /var/www/project/staticfiles
+    <Directory /var/www/project/staticfiles>
+            Require all granted
+     </Directory>
+
+    <Directory /var/www/project/core>
+            <Files wsgi.py>
+                    Require all granted
+            </Files>
+    </Directory>
+
+    WSGIDaemonProcess django_app python-path=/var/www/project python-home=/var/www/project/environment
+    WSGIProcessGroup django_app
+    WSGIScriptAlias / /var/www/project/core/wsgi.py
+</VirtualHost>    
