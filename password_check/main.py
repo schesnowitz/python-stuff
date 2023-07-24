@@ -42,6 +42,6 @@ def main(args):
             print(f"{password} was found {count} times, this is not a great password")
         else:
             print(f"{password} was not found, looks like you are good to go!")
-
-
-main(sys.argv[1:])
+    return "Program has completed and closed"
+if __name__ == "__main__":
+    sys.exit(main(sys.argv[1:]))
