@@ -30,3 +30,5 @@ def mult_by_2(data_list):
     return data_list*2
 print(map(mult_by_2, [1,2,3,4]))
 print(list(map(mult_by_2, [1,2,3,4]))) # covert to list
+squared_numbers = list(map(lambda x: x ** 2, [1,2,3,4]))
+print(squared_numbers)
